@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6d17e4e266b6f154",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b34257c48916a97e",
+        "type": "http in",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "url": "/auth/login",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 40,
+        "wires": [
+            [
+                "8e4fd1808803ba53"
+            ]
+        ]
+    },
+    {
+        "id": "8e4fd1808803ba53",
+        "type": "function",
+        "z": "6d17e4e266b6f154",
+        "name": "function 5",
+        "func": "const {email,password} = msg.payload;\nconst token = {\n    \"admin@ticket.resell.com\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NDZiMWJhLTE5NWUtNGI4NS1hZDJkLTdiYzQ4ZjdlOGYyZiIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQHRpY2tldC5yZXNlbGwuY29tIiwic3RhdHVzIjoiVkVSSUZJRUQiLCJyb2xlIjoiQURNSU4iLCJ0eXBlUmVnaXN0ZXIiOiJTWVNURU0iLCJhdmF0YXIiOm51bGwsInJhdGUiOjAsInJlcHV0YXRpb24iOjEwMDAwLCJjcmVhdGVkQnkiOm51bGwsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJ1cGRhdGVkQXQiOm51bGx9.9lJCbFvPWpufspUCRriwZkzeGYm-w2J1qq7hM9s_B-A\",\n    \"staff@ticket.resell.com\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NDZiMWJhLTE5NWUtNGI4NS1hZDJkLTdiYzQ4ZjdlOGYyZiIsInVzZXJuYW1lIjoic3RhZmYiLCJlbWFpbCI6InN0YWZmQHRpY2tldC5yZXNlbGwuY29tIiwic3RhdHVzIjoiVkVSSUZJRUQiLCJyb2xlIjoiU1RBRkYiLCJ0eXBlUmVnaXN0ZXIiOiJTWVNURU0iLCJhdmF0YXIiOm51bGwsInJhdGUiOjAsInJlcHV0YXRpb24iOjEwMDAwLCJjcmVhdGVkQnkiOm51bGwsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJ1cGRhdGVkQXQiOm51bGx9.zIVi4HwajiP3SNoGNLOOkcnyPp2E8868BbWDmI41-KY\",\n    \"member@ticket.resell.com\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NDZiMWJhLTE5NWUtNGI4NS1hZDJkLTdiYzQ4ZjdlOGYyZiIsInVzZXJuYW1lIjoibWVtYmVyIiwiZW1haWwiOiJtZW1iZXJAdGlja2V0LnJlc2VsbC5jb20iLCJzdGF0dXMiOiJWRVJJRklFRCIsInJvbGUiOiJNRU1CRVIiLCJ0eXBlUmVnaXN0ZXIiOiJTWVNURU0iLCJhdmF0YXIiOm51bGwsInJhdGUiOjAsInJlcHV0YXRpb24iOjEwMDAwLCJjcmVhdGVkQnkiOm51bGwsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEJ5IjpudWxsLCJ1cGRhdGVkQXQiOm51bGx9.fSlyrWMKnzO8okRFHVbUiGw8cYE6J8_LWMBTgpRtZOg\",\n}\nlet payload;\nif (email && password && password === \"12345678\"){\n    const _token = token[email];\n    if(_token){\n        msg.statusCode = 200;\n        payload = {\n            email: email,\n            token: _token\n        }\n    }else{\n        msg.statusCode = 305;\n        payload = {\n            message: \"Login credentials not match in the system\"\n        }\n    }\n}else{\n    msg.statusCode = 305;\n    payload = {\n        message: \"Email and Password cannot be empty\"\n    }\n}\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 40,
+        "wires": [
+            [
+                "a962486b45673d7b"
+            ]
+        ]
+    },
+    {
+        "id": "a962486b45673d7b",
+        "type": "http response",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 590,
+        "y": 40,
+        "wires": []
+    }
+]
