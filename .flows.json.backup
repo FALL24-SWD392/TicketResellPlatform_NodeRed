@@ -17,7 +17,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 190,
-        "y": 240,
+        "y": 40,
         "wires": [
             [
                 "8e4fd1808803ba53"
@@ -37,7 +37,7 @@
         "finalize": "",
         "libs": [],
         "x": 400,
-        "y": 240,
+        "y": 40,
         "wires": [
             [
                 "a962486b45673d7b"
@@ -52,7 +52,55 @@
         "statusCode": "",
         "headers": {},
         "x": 590,
-        "y": 240,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "a3316fa001e69511",
+        "type": "http in",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "url": "subscriptions",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "eb9992ca59520415"
+            ]
+        ]
+    },
+    {
+        "id": "eb9992ca59520415",
+        "type": "function",
+        "z": "6d17e4e266b6f154",
+        "name": "function 6",
+        "func": "const data = [\n  {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"name\": \"Basic Plan\",\n    \"saleLimit\": 10,\n    \"description\": \"Access to core features\",\n    \"price\": 9.99\n  },\n  {\n    \"id\": \"234f5678-9abc-12d3-b456-536614174001\",\n    \"name\": \"Premium Plan\",\n    \"saleLimit\": 50,\n    \"description\": \"Includes advanced features\",\n    \"price\": 29.99\n  },\n  {\n    \"id\": \"345g6789-0abc-12d3-c456-646614174002\",\n    \"name\": \"Enterprise Plan\",\n    \"saleLimit\": \"Unlimited\",\n    \"description\": \"All features, tailored support\",\n    \"price\": 99.99\n  },\n  {\n    \"id\": \"456h7890-1abc-12d3-d456-756614174003\",\n    \"name\": \"Annual Basic\",\n    \"saleLimit\": 120,\n    \"description\": \"Discounted annual basic plan\",\n    \"price\": 89.99\n  },\n  {\n    \"id\": \"567i8901-2abc-12d3-e456-866614174004\",\n    \"name\": \"Monthly Premium\",\n    \"saleLimit\": 5,\n    \"description\": \"Monthly access to premium features\",\n    \"price\": 14.99\n  }\n];\nmsg.statusCode = 200;\nmsg.payload ={\n    size: 20,\n    page: 1,\n    totalSize: 5,\n    totalPage: 1,\n    status: 200,\n    message: \"Get all subscription successfully.\",\n    data: data\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "71bf31fcb757628e"
+            ]
+        ]
+    },
+    {
+        "id": "71bf31fcb757628e",
+        "type": "http response",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 590,
+        "y": 140,
         "wires": []
     }
 ]
