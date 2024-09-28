@@ -132,7 +132,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
+        "x": 400,
         "y": 240,
         "wires": [
             [
@@ -147,8 +147,56 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 690,
+        "x": 590,
         "y": 240,
+        "wires": []
+    },
+    {
+        "id": "1e1672287177074a",
+        "type": "http in",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "url": "users",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "0ef47f263adf3128"
+            ]
+        ]
+    },
+    {
+        "id": "0ef47f263adf3128",
+        "type": "function",
+        "z": "6d17e4e266b6f154",
+        "name": "function 8",
+        "func": "const users = [\n  {\n    \"id\": \"63748a22-7111-4897-9b6b-616433038835\",\n    \"username\": \"john_doe\",\n    \"email\": \"johndoe@example.com\",\n    \"status\": \"VERIFIED\",\n    \"role\": \"MEMBER\",\n    \"typeRegister\": \"email\",\n    \"avatar\": \"avatar1.jpg\",\n    \"rate\": 4.5,\n    \"reputation\": 100,\n    \"createdBy\": \"system\",\n    \"createdAt\": \"2023-01-01T00:00:00\",\n    \"updatedBy\": \"system\",\n    \"updatedAt\": \"2023-01-01T00:00:00\"\n  },\n  {\n    \"id\": \"89469a22-7111-4897-9b6b-616433038835\",\n    \"username\": \"jane_smith\",\n    \"email\": \"janesmith@example.com\",\n    \"status\": \"VERIFIED\",\n    \"role\": \"MEMBER\",\n    \"typeRegister\": \"google\",\n    \"avatar\": \"avatar2.jpg\",\n    \"rate\": 3.8,\n    \"reputation\": 50,\n    \"createdBy\": \"system\",\n    \"createdAt\": \"2023-02-01T00:00:00\",\n    \"updatedBy\": \"system\",\n    \"updatedAt\": \"2023-02-01T00:00:00\"\n  },\n  {\n    \"id\": \"b7469a22-7111-4897-9b6b-616433038835\",\n    \"username\": \"michael_johnson\",\n    \"password\": \"password789\",\n    \"email\": \"michaeljohnson@example.com\",\n    \"status\": \"UNVERIFIED\",\n    \"role\": \"MEMBER\",\n    \"typeRegister\": \"facebook\",\n    \"avatar\": \"avatar3.jpg\",\n    \"rate\": 4.2,\n    \"reputation\": 80,\n    \"createdBy\": \"system\",\n    \"createdAt\": \"2023-03-01T00:00:00\",\n    \"updatedBy\": \"system\",\n    \"updatedAt\": \"2023-03-01T00:00:00\"\n  },\n  {\n    \"id\": \"d5469a22-7111-4897-9b6b-616433038835\",\n    \"username\": \"emily_davis\",\n    \"password\": \"password000\",\n    \"email\": \"emilydavis@example.com\",\n    \"status\": \"VERIFIED\",\n    \"role\": \"MEMBER\",\n    \"typeRegister\": \"email\",\n    \"avatar\": \"avatar4.jpg\",\n    \"rate\": 4.8,\n    \"reputation\": 120,\n    \"createdBy\": \"system\",\n    \"createdAt\": \"2023-04-01T00:00:00\",\n    \"updatedBy\": \"system\",\n    \"updatedAt\": \"2023-04-01T00:00:00\"\n  },\n  {\n    \"id\": \"f3469a22-7111-4897-9b6b-616433038835\",\n    \"username\": \"oliver_wilson\",\n    \"email\": \"oliverwilson@example.com\",\n    \"status\": \"VERIFIED\",\n    \"role\": \"MEMBER\",\n    \"typeRegister\": \"google\",\n    \"avatar\": \"avatar5.jpg\",\n    \"rate\": 3.5,\n    \"reputation\": 70,\n    \"createdBy\": \"system\",\n    \"createdAt\": \"2023-05-01T00:00:00\",\n    \"updatedBy\": \"system\",\n    \"updatedAt\": \"2023-05-01T00:00:00\"\n  }\n];\n\nconst payload = {\n    status: 200,\n    message: \"Get all users successfully.\",\n    size: 20,\n    page: 1,\n    totalSize: users.length,\n    totalPage: 1,\n    data: users\n}\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "feda3144c998648e"
+            ]
+        ]
+    },
+    {
+        "id": "feda3144c998648e",
+        "type": "http response",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 590,
+        "y": 340,
         "wires": []
     }
 ]
